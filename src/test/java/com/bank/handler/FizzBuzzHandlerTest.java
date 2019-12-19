@@ -22,6 +22,9 @@ public class FizzBuzzHandlerTest {
     @Mock
     private ServiceImpl mockedService;
 
+    @Mock
+    private CommandInvoker mockedCommandInvoker;
+
     private FizzBuzzHandler handler;
 
     @Before
