@@ -79,4 +79,26 @@ public class ServiceImplTest {
             Assertions.assertThat(actual).isFalse();
         }
     }
+
+    @Test
+    public void shouldReturnTrue_whenInputDividedByBothThreeAndFiveAndTheirMultiplesAndContainsBothThreeAndFive() {
+        int[] containsThreeAndFive = new int[] {35, 53, 553, 835, 593, 635};
+
+        for(int i: containsThreeAndFive) {
+            boolean actual = service.isFizzBuzz(i);
+
+            Assertions.assertThat(actual).isTrue();
+        }
+    }
+
+    @Test
+    public void shouldReturnFalse_whenInputIsNotDividedByThreeOrFiveAndDoesNotContainOneOfThreeOrFive() {
+        int[] randomCollection = new int[] {982, 478, 426, 778, 178};
+
+        for(int i: randomCollection) {
+            boolean actual = service.isFizzBuzz(i);
+
+            Assertions.assertThat(actual).isFalse();
+        }
+    }
 }
