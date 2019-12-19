@@ -22,6 +22,9 @@ public class BuzzHandlerTest {
     @Mock
     private ServiceImpl mockedService;
 
+    @Mock
+    private CommandInvoker mockedCommandInvoker;
+
     private BuzzHandler handler;
 
     @Before
@@ -43,5 +46,32 @@ public class BuzzHandlerTest {
         Mockito.verifyNoMoreInteractions(mockedCommandInvoker);
 
         Assertions.assertThat(actual).isTrue();
+    }
+
+    @Test
+    public void shouldReturnFalse_whenIrrelevantParameterPassed() {
+        Mockito.when(mockedService.isBuzz(Mockito.anyInt())).thenReturn(false);
+        Mockito.doNothing().when(mockedCommandInvoker).execute(Mockito.anyString());
+
+        boolean actual = handler.execute(Mockito.anyInt());
+
+        Mockito.verify(mockedService, Mockito.times(1)).isBuzz(Mockito.anyInt());
+        Mockito.verifyNoMoreInteractions(mockedService);
+        Mockito.verifyZeroInteractions(mockedCommandInvoker);
+
+        Assertions.assertThat(actual).isFalse();
+    }
+
+    @Test
+    public void shouldThrowIllegalArgumentException_whenInvalidParamPassed() {
+        String errorMessage = "Something went wrong!";
+
+        expectedException.expect(IllegalArgumentException.class);
+        expectedException.expectMessage(errorMessage);
+
+        Mockito.when(mockedService.isBuzz(Mockito.anyInt())).thenReturn(true);
+        Mockito.doThrow(new IllegalArgumentException(errorMessage)).when(mockedCommandInvoker).execute(Mockito.anyString());
+
+        handler.execute(Mockito.anyInt());
     }
 }
