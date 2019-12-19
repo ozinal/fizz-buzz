@@ -13,4 +13,14 @@ public class ColorCommand implements Command {
     public ColorCommand(ConsolePrinter printer) {
         this.consolePrinter = printer;
     }
+
+    @Override
+    public void execute(int i) {
+        this.consolePrinter.println(i);
+    }
+
+    @Override
+    public void execute(String i) {
+        this.consolePrinter.println(i);
+    }
 }
