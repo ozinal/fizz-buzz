@@ -27,7 +27,7 @@ Buzz
 ... etc up to 100
 ```
 
-[Click here for JavaDoc.](https://ozinal.github.io/fizz-buzz/)
+[Click here for JavaDoc.](https://ozinal.github.io/fizz-buzz/docs)
 
 Please make sure you've installed maven and use the commands below to build service.
 
