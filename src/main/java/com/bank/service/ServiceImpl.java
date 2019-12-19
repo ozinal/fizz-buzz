@@ -45,4 +45,19 @@ public class ServiceImpl implements Service {
         }
         return false;
     }
+
+    /**
+     * Responsible to handle both fizz buzz condition.
+     * Returns true in case if both fizz and buzz comparators matches with the input.
+     *
+     * @param i
+     * @return
+     */
+    @Override
+    public boolean isFizzBuzz(int i) {
+        if(isFizz(i) && isBuzz(i)) {
+            return true;
+        }
+        return false;
+    }
 }
