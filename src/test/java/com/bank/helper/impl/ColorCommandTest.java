@@ -22,4 +22,23 @@ public class ColorCommandTest {
     public void setUp() {
         MockitoAnnotations.initMocks(this);
     }
+
+    @Test
+    public void shouldExecuteConsolePrinter_whenNumericParameterPassed() {
+        Mockito.doNothing().when(mockedConsolePrinter).println(Mockito.anyInt());
+
+        command.execute(7);
+
+        Mockito.verify(mockedConsolePrinter, Mockito.times(1)).println(Mockito.anyInt());
+    }
+
+    @Test
+    public void shouldExecuteConsolePrinter_whenAlphanumericParameterPassed() {
+        Mockito.doNothing().when(mockedConsolePrinter).println(Mockito.anyString());
+
+        command.execute("FizzBuzz");
+
+        Mockito.verify(mockedConsolePrinter, Mockito.times(1)).println(Mockito.anyString());
+    }
+
 }
