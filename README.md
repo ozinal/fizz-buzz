@@ -35,7 +35,7 @@ Please make sure you've installed maven and use the commands below to build serv
 $ mvn clean compile
 ```
 
-Use the command below to test the service.
+Use the command below to run the tests.
 ```
 $ mvn test
 ```
