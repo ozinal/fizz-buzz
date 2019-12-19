@@ -26,4 +26,23 @@ public class ServiceImpl implements Service {
         }
         return false;
     }
+
+    /**
+     * Responsible to handle buzz condition.
+     * Returns true in case if input divisible by five and it's multiples and
+     * if the given value contains three.
+     *
+     * @param i
+     * @return
+     */
+    @Override
+    public boolean isBuzz(int i) {
+        if(i%FIVE==0) {
+            return true;
+        }
+        if(String.valueOf(i).contains(STR_FIVE)) {
+            return true;
+        }
+        return false;
+    }
 }
