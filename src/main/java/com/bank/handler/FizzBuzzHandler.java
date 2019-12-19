@@ -19,4 +19,19 @@ public class FizzBuzzHandler extends AbstractHandler {
         this.service = service;
         this.commandInvoker = invoker;
     }
+
+    /**
+     * Responsible to compare service outcome and execute invokers implementation.
+     *
+     * @param i
+     * @return
+     */
+    @Override
+    protected boolean execute(int i) {
+        if(service.isFizzBuzz(i)) {
+            this.commandInvoker.execute(FIZZ_BUZZ);
+            return true;
+        }
+        return false;
+    }
 }

@@ -44,4 +44,30 @@ public class FizzBuzzHandlerTest {
 
         Assertions.assertThat(actual).isTrue();
     }
+
+    @Test
+    public void shouldReturnFalse_whenPassedParameterDoesNotMatchCondition() {
+        Mockito.when(mockedService.isFizzBuzz(Mockito.anyInt())).thenReturn(false);
+
+        boolean actual = handler.execute(Mockito.anyInt());
+
+        Mockito.verify(mockedService, Mockito.times(1)).isFizzBuzz(Mockito.anyInt());
+        Mockito.verifyNoMoreInteractions(mockedService);
+        Mockito.verifyZeroInteractions(mockedCommandInvoker);
+
+        Assertions.assertThat(actual).isFalse();
+    }
+
+    @Test
+    public void shouldThrowException_whenInvalidParameterPassed() {
+        String errorMessage = "Something went wrong!";
+
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage(errorMessage);
+
+        Mockito.when(mockedService.isFizzBuzz(Mockito.anyInt())).thenReturn(true);
+        Mockito.doThrow(new Exception(errorMessage)).when(mockedCommandInvoker).execute(Mockito.anyInt());
+
+        handler.execute(Mockito.anyInt());
+    }
 }
