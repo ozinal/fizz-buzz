@@ -1,6 +1,9 @@
 package com.bank.service;
 
-import static com.bank.utils.Constants.*;
+import static com.bank.utils.Constants.THREE;
+import static com.bank.utils.Constants.FIVE;
+import static com.bank.utils.Constants.STR_THREE;
+import static com.bank.utils.Constants.STR_FIVE;
 
 /**
  * Service class is responsible to compare conditions for all fizz, buzz and fizzbuzz conditions

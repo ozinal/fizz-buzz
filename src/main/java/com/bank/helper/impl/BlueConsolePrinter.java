@@ -2,8 +2,7 @@ package com.bank.helper.impl;
 
 import com.bank.helper.ConsolePrinter;
 
-import static com.bank.utils.Constants.ANSI_BLUE;
-import static com.bank.utils.Constants.ANSI_RESET;
+import static com.bank.utils.Constants.*;
 import static java.lang.System.out;
 
 /**
