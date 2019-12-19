@@ -32,7 +32,7 @@ Buzz
 Please make sure you've installed maven and use the commands below to build service.
 
 ```
-$ mvn clean build
+$ mvn clean compile
 ```
 
 Use the command below to test the service.
