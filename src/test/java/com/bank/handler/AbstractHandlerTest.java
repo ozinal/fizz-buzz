@@ -17,9 +17,20 @@ public class AbstractHandlerTest {
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
+    @Mock
+    private BuzzHandler mockedBuzzHandler;
+
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+    }
+
+    @Test
+    public void shouldSetHandler_whenValidHandlerPassed() {
+        AbstractHandler absCls = Mockito.mock(AbstractHandler.class, Mockito.CALLS_REAL_METHODS);
+        AbstractHandler actual = absCls.setNext(mockedBuzzHandler);
+
+        Assertions.assertThat(actual).isEqualTo(mockedBuzzHandler);
     }
 
     @Test
