@@ -24,4 +24,26 @@ public class ServiceImplTest {
             Assertions.assertThat(actual).isTrue();
         }
     }
+
+    @Test
+    public void shouldReturnTrue_whenInputContainsThree() {
+        int[] containsThree = new int[] {235, 734, 389, 873};
+
+        for(int i: containsThree) {
+            boolean actual = service.isFizz(i);
+
+            Assertions.assertThat(actual).isTrue();
+        }
+    }
+
+    @Test
+    public void shouldReturnFalse_whenInputDoesNotMatchThreeAndMultiplesAndDoesNotContainThree() {
+        int[] randomCollection = new int[] {785, 494,986,421};
+
+        for(int i: randomCollection) {
+            boolean actual = service.isFizz(i);
+
+            Assertions.assertThat(actual).isFalse();
+        }
+    }
 }
