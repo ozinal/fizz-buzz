@@ -25,4 +25,11 @@ public class BlueConsolePrinterTest {
 
         Mockito.verify(out, Mockito.times(1)).println(Mockito.anyString());
     }
+
+    @Test
+    public void shouldPrint_whenAlphanumericParameterPassed() {
+        printer.println("Fizz");
+
+        Mockito.verify(out, Mockito.times(1)).println(Mockito.anyString());
+    }
 }

@@ -14,4 +14,9 @@ public class BlueConsolePrinter implements ConsolePrinter {
     public void println(int i) {
         out.println(ANSI_BLUE + i + ANSI_RESET);
     }
+
+    @Override
+    public void println(String i) {
+        out.println(ANSI_BLUE + i + ANSI_RESET);
+    }
 }
