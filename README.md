@@ -34,6 +34,11 @@ Please make sure you've installed maven and use the commands below to build serv
 ```
 $ mvn clean build
 ```
+
+Use the command below to test the service.
+```
+$ mvn test
+```
 ##
 
 ## Command Invoker, Command and Color Command
@@ -67,7 +72,9 @@ integer to multiple handlers.
 
 `ServiceImpl` class implements `Service` interface, the implementation has `isFizz`, `isBuzz` and `isFizzBuzz` methods that's been run by individual handlers.
 
-## Utils
+## Utils and Constants
 ![Service Diagram](diagrams/utils.png)
 
 `ConsolePrinterUtil` class has two methods that returns `RedConsolePrinter` and `BlueConsolePrinter` instances.
+
+`Constants` class has required numbers and strings required by other class and interfaces
