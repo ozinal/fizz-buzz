@@ -22,6 +22,8 @@ public class FizzHandlerTest {
     @Mock
     private ServiceImpl mockedService;
 
+    @Mock
+    private CommandInvoker mockedCommandInvoker;
 
     private FizzHandler handler;
 
@@ -44,5 +46,31 @@ public class FizzHandlerTest {
         Mockito.verifyNoMoreInteractions(mockedCommandInvoker);
 
         Assertions.assertThat(actual).isTrue();
+    }
+
+    @Test
+    public void shouldReturnFalse_whenIrrelevantParameterPassed() {
+        Mockito.when(mockedService.isFizz(Mockito.anyInt())).thenReturn(false);
+
+        boolean actual = handler.execute(Mockito.anyInt());
+
+        Mockito.verify(mockedService, Mockito.times(1)).isFizz(Mockito.anyInt());
+        Mockito.verifyNoMoreInteractions(mockedService);
+        Mockito.verifyZeroInteractions(mockedCommandInvoker);
+
+        Assertions.assertThat(actual).isFalse();
+    }
+
+    @Test
+    public void shouldThrowIllegalStateException_whenInvalidParameterPassed() {
+        String errorMessage = "Something went wrong!";
+
+        expectedException.expect(IllegalStateException.class);
+        expectedException.expectMessage(errorMessage);
+
+        Mockito.when(mockedService.isFizz(Mockito.anyInt())).thenReturn(true);
+        Mockito.doThrow(new IllegalStateException(errorMessage)).when(mockedCommandInvoker).execute(Mockito.anyString());
+
+        handler.execute(Mockito.anyInt());
     }
 }

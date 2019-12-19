@@ -1,5 +1,13 @@
 package com.bank.handler;
 
+/**
+ * Defines the signature of handlers without having impelementation of execute() method
+ * and receives the number of handler implementations with setNext(customHandler);
+ *
+ * Expose applyTo method to receive number of inputs and progress those inputs with
+ * related handlers / service implementations.
+ *
+ */
 public abstract class AbstractHandler {
 
     private AbstractHandler next;
