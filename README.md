@@ -34,6 +34,11 @@ Please make sure you've installed maven and use the commands below to build serv
 ```
 $ mvn clean build
 ```
+
+Use the command below to test the service.
+```
+$ mvn test
+```
 ##
 
 ## Command Invoker, Command and Color Command
